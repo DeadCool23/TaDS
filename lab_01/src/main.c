@@ -1,7 +1,7 @@
 #include <stdio.h>
-#include "nums.h"
-#include "errs.h"
-#include "helper.h"
+#include "../inc/helper.h"
+#include "../inc/nums.h"
+#include "../inc/errs.h"
 
 int main(void) {
     err_t err = OK;

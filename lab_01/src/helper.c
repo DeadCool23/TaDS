@@ -1,4 +1,4 @@
-#include "helper.h"
+#include "../inc/helper.h"
 #include <stdio.h>
 
 void program_info(void) {

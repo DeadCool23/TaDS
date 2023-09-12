@@ -1,10 +1,11 @@
-#include "nums.h"
+#include "../inc/nums.h"
 
 #include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <stdint.h>
+#include <unistd.h>
 
 #include <math.h>
 
@@ -58,7 +59,7 @@ void exp_allign(void *num, const exp_allign_t allig_type, const exp_type_t type)
         order = &((lllexp_t *)num)->num_order;       
     }
     
-    int i;
+    ssize_t i;
     int add_to_order = 0;
     char tmp_mantiss[LLLEXP_LEN + 1];
     switch (allig_type) {
@@ -171,7 +172,7 @@ err_t mult_on_digit(const char *num, const char char_digit, char *res) {
 
     *res_ptr = '\0';
 
-    for (int i = num_len - 1; i >= 0; i--) {
+    for (ssize_t i = num_len - 1; i >= 0; i--) {
         uint8_t num_digit = num[i] - '0'; /// Получиние цифры i-того разряда
         uint8_t sum_of_digits = num_digit * mult_digit + rest; /// Перемножение с добавлением остатка
         *(--write_ptr) = (sum_of_digits % 10) + '0'; /// Запись результата перемножения цифр
@@ -191,16 +192,16 @@ err_t mult_on_digit(const char *num, const char char_digit, char *res) {
 
 err_t sum_mult(const char *term_fst, const char *term_scd, char *res) {
     uint8_t rest = 0; /// Остаток
-    int len_fst = strlen(term_fst); /// Длина первого числа
-    int len_scd = strlen(term_scd); /// Длина второго числа
-    int max_len = len_fst > len_scd ? len_fst : len_scd; /// Максимальная длина числа
+    size_t len_fst = strlen(term_fst); /// Длина первого числа
+    size_t len_scd = strlen(term_scd); /// Длина второго числа
+    ssize_t max_len = len_fst > len_scd ? len_fst : len_scd; /// Максимальная длина числа
     char *res_ptr = res + LLLEXP_LEN; /// Конец результирующей строки
     char *write_ptr = res_ptr; /// Указатель на запись
 
     *res_ptr = '\0';
 
-    int i = len_fst - 1;
-    int j = len_scd - 1;
+    ssize_t i = len_fst - 1;
+    ssize_t j = len_scd - 1;
 
     for (; max_len > 0; max_len--) {
         uint8_t digit_fst = (i >= 0) ? term_fst[i--] - '0' : 0; /// Получение цифры первого числа
@@ -237,7 +238,7 @@ err_t multiply(const lllong_t *int_mult, const lexp_t *exp_mult, llexp_t *res) {
     char sum_of_mult[LLLEXP_LEN + 1] = "0"; /// Сумма поцифренных произведений
     size_t exp_len = strlen(exp_mult->mantiss); /// Длина экспоненциального числа
 
-    for (int i = exp_len - 1; i >= 0; i--) {
+    for (ssize_t i = exp_len - 1; i >= 0; i--) {
         char mult_on_i_digit[LLLEXP_LEN + 1]; /// Произведение числа на i-тую цифру экспоненциального числа
         strcat(int_mult_num, add_null_to_end ? "0" : ""); /// Поразрядное выравнивание
 
@@ -279,6 +280,7 @@ void round_to_smaller(lllexp_t *to_small) {
     strcpy(round_mantiss, to_small->mantiss);
     char digit_to_round = *(round_mantiss + LLEXP_LEN); /// Получение невмещаемой в мантиссу цифры
     *(round_mantiss + LLEXP_LEN) = '\0'; /// Обрезание строки до допустимого размера мантиссы
+    to_small->num_order += strlen(to_small->mantiss) - strlen(round_mantiss);
     if (digit_to_round - '0' < 5) /* Округление вниз */ {
         strcpy(to_small->mantiss, round_mantiss); 
     } else  /* Округление вверх */ {

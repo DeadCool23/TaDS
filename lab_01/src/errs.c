@@ -1,4 +1,4 @@
-#include "errs.h"
+#include "../inc/errs.h"
 
 #include <stdio.h>
 
