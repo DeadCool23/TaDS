@@ -6,21 +6,24 @@ FUNC_TESTING = testing.sh
 TEST_DIR = tests
 SRC = $(wildcard src/*.c)
 
-.PHONY: run debug build clean
-
+.PHONY: run
 run: $(TARGET)
 	./$(TARGET)
 
+.PHONY: build
 build: $(TARGET)
 
-func:
+.PHONY: func
+func: $(TEST_DIR)/$(FUNC_TESTING)
 	cd $(TEST_DIR) && bash $(FUNC_TESTING) -v
 
-debug:
-	$(CC) $(CFLAGS) $(DEBUG) -g $(SRC) -o $(TARGET)
+.PHONY: debug
+debug: CFLAGS += $(DEBUG)
+debug: $(TARGET)
 
-clean: $(TARGET)
-	rm ./$(TARGET)
+.PHONY: clean
+clean:
+	rm ./build/app.exe
 
 $(TARGET): $(SRC)
 	$(CC) $(CFLAGS) $^ -o $@

@@ -5,11 +5,11 @@
 
 #include "errs.h"
 
-#define LLONG_LEN 40 /// @def LLONG_LEN - Максимальный размер целого числа
-#define LLEXP_LEN 40 /// @def LLEXP_LEN - Максимальный размер мантиссы длинного экспоненциального числа
-#define LEXP_LEN 30 /// @def LEXP_LEN - Максимальный размер мантиссы коротекого экспоненциального числа
-#define ORDER_LEN 5 /// @def ORDER_LEN - Максимальный порядок экспоненциальных чисел
-#define LLLEXP_LEN (LLONG_LEN + LEXP_LEN + 2) /// Максимальный размер матсиссы максимального экспоненциального числа
+#define LLONG_LEN 40                          /// @def LLONG_LEN - Максимальный размер целого числа
+#define LEXP_LEN 30                           /// @def LEXP_LEN - Максимальный размер мантиссы коротекого экспоненциального числа
+#define LLEXP_LEN 40                          /// @def LLEXP_LEN - Максимальный размер мантиссы длинного экспоненциального числа
+#define LLLEXP_LEN (LLONG_LEN + LEXP_LEN + 2) /// @def LLLEXP_LEN Максимальный размер матсиссы максимального экспоненциального числа
+#define ORDER_LEN 5                           /// @def ORDER_LEN - Максимальный порядок экспоненциальных чисел
 
 /// @struct lexp_t - экспоненциальное число с мантиссой размера 30
 typedef struct {
@@ -42,14 +42,14 @@ typedef struct {
 
 /// @enum allign_t - выравнивание экспоненциальных чисел
 typedef enum {
-    DEL_LEAD_NULLS, /// Выравнивание лидирующих нулей
+    DEL_LEAD_NULLS,   /// Выравнивание лидирующих нулей
     END_NULLS_TO_EXP, /// Выравнивание нулей на конце
 } exp_allign_t;
 
 /// @enum exp_type_t - типы экспоненциальных чисел
 typedef enum {
-    LEXP, /// тип lexp_t
-    LLEXP, /// тип llexp_t
+    LEXP,   /// тип lexp_t
+    LLEXP,  /// тип llexp_t
     LLLEXP, /// тип lllexp_t
 } exp_type_t;
 

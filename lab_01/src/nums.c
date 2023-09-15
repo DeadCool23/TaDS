@@ -14,7 +14,7 @@ bool is_sign(const char symb) { return symb == '+' || symb == '-'; }
 err_t integer_input(lllong_t *num) {
     size_t i = 0;
     char symb = '\0';
-    bool input_sign = false; /// Вводился знак
+    bool input_sign = false;    /// Вводился знак
     bool leading_nulls = false; /// Есть ли лидирующие нули
 
     num->sign = true;
@@ -26,7 +26,7 @@ err_t integer_input(lllong_t *num) {
                 input_sign = true;
             } else return ERR_IO;
         } else if (isdigit(symb)) /* Ввод цифр */ {
-            if (!i && symb == '0') leading_nulls = true; /// Откидывание лидирующих нулей
+            if (!i && symb == '0') leading_nulls = true;     /// Откидывание лидирующих нулей
             else if (i < LLONG_LEN) num->digits[i++] = symb; /// Запись цифр в структуру
             else return ERR_IO;
         } else return ERR_IO;
@@ -87,10 +87,10 @@ err_t exponent_input(lexp_t *num) {
     size_t i = 0;
     char symb = '\0';
 
-    int cnt_unordered = 0; /// Счетчик чисел после '.'
-    bool exp_part = false; /// Есть ли экспоненциальная часть
-    bool is_matiss = false; /// Введина ли мантисса
-    bool input_sign = false; /// Введен ли знак
+    int cnt_unordered = 0;      /// Счетчик чисел после '.'
+    bool exp_part = false;      /// Есть ли экспоненциальная часть
+    bool is_matiss = false;     /// Введина ли мантисса
+    bool input_sign = false;    /// Введен ли знак
     bool leading_nulls = false; /// Есть ли лидирующие нули
 
     num->sign = true;
@@ -102,8 +102,8 @@ err_t exponent_input(lexp_t *num) {
                 input_sign = true;
             } else return ERR_IO;
         } else if (isdigit(symb) || symb == '.') {
-            int float_nulls = 0; /// Счетчик нулей почле точки
-            bool with_float = false; /// Есть ли дробная часть
+            int float_nulls = 0;             /// Счетчик нулей почле точки
+            bool with_float = false;         /// Есть ли дробная часть
             bool only_nulls_in_float = true; /// ТОлько ли нули в дробной части 
             do {
                 /// Ввод дробной части
@@ -113,7 +113,7 @@ err_t exponent_input(lexp_t *num) {
                     else if (i < LEXP_LEN) {
                         /// Проверка наличия ненулей в дробной части
                         if (with_float && symb != '0') only_nulls_in_float = false;
-                        num->mantiss[i++] = symb; /// Запись числа в мантиссу
+                        num->mantiss[i++] = symb;                                 /// Запись числа в мантиссу
                         float_nulls += only_nulls_in_float && with_float ? 1 : 0; /// Подсчет кол-ва нулей в дробной части
                     }
                     else return ERR_IO;
@@ -164,19 +164,19 @@ err_t exponent_input(lexp_t *num) {
 }
 
 err_t mult_on_digit(const char *num, const char char_digit, char *res) {
-    uint8_t rest = 0; /// Остаток
-    size_t num_len = strlen(num); /// длина числа
+    uint8_t rest = 0;                      /// Остаток
+    size_t num_len = strlen(num);          /// длина числа
     uint8_t mult_digit = char_digit - '0'; /// Цифра множитель
-    char *res_ptr = res + LLLEXP_LEN; /// Конец результирующей строки
-    char *write_ptr = res_ptr; /// Указатель на запись
+    char *res_ptr = res + LLLEXP_LEN;      /// Конец результирующей строки
+    char *write_ptr = res_ptr;             /// Указатель на запись
 
     *res_ptr = '\0';
 
     for (ssize_t i = num_len - 1; i >= 0; i--) {
-        uint8_t num_digit = num[i] - '0'; /// Получиние цифры i-того разряда
+        uint8_t num_digit = num[i] - '0';                      /// Получиние цифры i-того разряда
         uint8_t sum_of_digits = num_digit * mult_digit + rest; /// Перемножение с добавлением остатка
-        *(--write_ptr) = (sum_of_digits % 10) + '0'; /// Запись результата перемножения цифр
-        rest = sum_of_digits / 10; /// Получение остатка
+        *(--write_ptr) = (sum_of_digits % 10) + '0';           /// Запись результата перемножения цифр
+        rest = sum_of_digits / 10;                             /// Получение остатка
     }
     
     /// Запись остатка при наличии
@@ -191,12 +191,12 @@ err_t mult_on_digit(const char *num, const char char_digit, char *res) {
 }
 
 err_t sum_mult(const char *term_fst, const char *term_scd, char *res) {
-    uint8_t rest = 0; /// Остаток
-    size_t len_fst = strlen(term_fst); /// Длина первого числа
-    size_t len_scd = strlen(term_scd); /// Длина второго числа
+    uint8_t rest = 0;                                        /// Остаток
+    size_t len_fst = strlen(term_fst);                       /// Длина первого числа
+    size_t len_scd = strlen(term_scd);                       /// Длина второго числа
     ssize_t max_len = len_fst > len_scd ? len_fst : len_scd; /// Максимальная длина числа
-    char *res_ptr = res + LLLEXP_LEN; /// Конец результирующей строки
-    char *write_ptr = res_ptr; /// Указатель на запись
+    char *res_ptr = res + LLLEXP_LEN;                        /// Конец результирующей строки
+    char *write_ptr = res_ptr;                               /// Указатель на запись
 
     *res_ptr = '\0';
 
@@ -207,9 +207,9 @@ err_t sum_mult(const char *term_fst, const char *term_scd, char *res) {
         uint8_t digit_fst = (i >= 0) ? term_fst[i--] - '0' : 0; /// Получение цифры первого числа
         uint8_t digit_scd = (j >= 0) ? term_scd[j--] - '0' : 0; /// Получение цифры второго числа
 
-        uint8_t sum_of_digits = digit_fst + digit_scd + rest; /// Сумма с учетом остатка
-        *(--write_ptr) = (sum_of_digits % 10) + '0'; /// Запись полученной суммы
-        rest = sum_of_digits / 10; /// Получение остатка
+        uint8_t sum_of_digits = digit_fst + digit_scd + rest;   /// Сумма с учетом остатка
+        *(--write_ptr) = (sum_of_digits % 10) + '0';            /// Запись полученной суммы
+        rest = sum_of_digits / 10;                              /// Получение остатка
     }
     
     /// Запись остатка при наличии
@@ -231,15 +231,15 @@ err_t multiply(const lllong_t *int_mult, const lexp_t *exp_mult, llexp_t *res) {
     tmp_mult.num_order = exp_mult->num_order;
 
     bool add_null_to_end = false;
-    char res_mantiss[LLLEXP_LEN + 1]; /// Мантисса результата
+    char res_mantiss[LLLEXP_LEN + 1];  /// Мантисса результата
     char int_mult_num[LLLEXP_LEN + 1]; /// Целый множитель
 
     strcpy(int_mult_num, int_mult->digits);
-    char sum_of_mult[LLLEXP_LEN + 1] = "0"; /// Сумма поцифренных произведений
+    char sum_of_mult[LLLEXP_LEN + 1] = "0";     /// Сумма поцифренных произведений
     size_t exp_len = strlen(exp_mult->mantiss); /// Длина экспоненциального числа
 
     for (ssize_t i = exp_len - 1; i >= 0; i--) {
-        char mult_on_i_digit[LLLEXP_LEN + 1]; /// Произведение числа на i-тую цифру экспоненциального числа
+        char mult_on_i_digit[LLLEXP_LEN + 1];             /// Произведение числа на i-тую цифру экспоненциального числа
         strcat(int_mult_num, add_null_to_end ? "0" : ""); /// Поразрядное выравнивание
 
         /// Произведение числа на i-тую цифру экспоненциального числа
@@ -252,7 +252,7 @@ err_t multiply(const lllong_t *int_mult, const lexp_t *exp_mult, llexp_t *res) {
 
         strcpy(tmp_mult.mantiss, res_mantiss);
         strcpy(sum_of_mult, tmp_mult.mantiss);
-        add_null_to_end = true; // Указание на надобность выравнивани по разрядам
+        add_null_to_end = true; /// Указание на надобность выравнивани по разрядам
     }
     /// Запись результата в структуру ответа
     strcpy(tmp_mult.mantiss, sum_of_mult);
@@ -279,7 +279,7 @@ void round_to_smaller(lllexp_t *to_small) {
     char round_mantiss[LLLEXP_LEN + 1]; /// Мантисса для записис округленного значения
     strcpy(round_mantiss, to_small->mantiss);
     char digit_to_round = *(round_mantiss + LLEXP_LEN); /// Получение невмещаемой в мантиссу цифры
-    *(round_mantiss + LLEXP_LEN) = '\0'; /// Обрезание строки до допустимого размера мантиссы
+    *(round_mantiss + LLEXP_LEN) = '\0';                /// Обрезание строки до допустимого размера мантиссы
     to_small->num_order += strlen(to_small->mantiss) - strlen(round_mantiss);
     if (digit_to_round - '0' < 5) /* Округление вниз */ {
         strcpy(to_small->mantiss, round_mantiss); 
@@ -298,7 +298,7 @@ void to_smaller_type(const lllexp_t *to_small, llexp_t *small) {
 
 err_t formated_output(const llexp_t *num) {
     int num_ord = !strcmp(num->mantiss, "0") /* Проверка нуля */ ? 0 : strlen(num->mantiss) + num->num_order; /// получение форматного порядка
-    if ((num_ord < 0 ? -num_ord : num_ord) / (int)pow(10, ORDER_LEN) != 0) return ERR_CALC_RANGE; /// Проверка выхода порядка за разрешенный размер
+    if ((num_ord < 0 ? -num_ord : num_ord) / (int)pow(10, ORDER_LEN) != 0) return ERR_CALC_RANGE;             /// Проверка выхода порядка за разрешенный размер
     printf("Result:\n");
     printf("%c0.%se%d\n", num->sign ? '+' : '-', num->mantiss, num_ord); /// Вывод числа
     return OK;
