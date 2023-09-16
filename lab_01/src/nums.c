@@ -132,16 +132,17 @@ err_t exponent_input(lexp_t *num) {
             char check_exp = getchar();
             if (!is_sign(check_exp) && !isdigit(check_exp)) return ERR_IO;
             ungetc(check_exp, stdin);
-
             /// Считывание порядка
             int tmp_order;
-            if (scanf("%d", &tmp_order) != 1)
-                return ERR_IO;
+            if (scanf("%d", &tmp_order) != 1) return ERR_IO;
+            /// Проверка символов после считанного порядка
+            char last_symb = getchar();
+            if (last_symb != '\n') return ERR_IO;
+            ungetc(last_symb, stdin);
+            /// Проверка на разрешенный диапазон порядка экспоненциального числа
+            if ((tmp_order < 0 ? -tmp_order : tmp_order) / (int)pow(10, ORDER_LEN) != 0) return ERR_IO;
             /// добавление доп порядка
             tmp_order -= cnt_unordered;
-            /// Проверка на разрешенный диапазон порядка экспоненциального числа
-            if ((tmp_order < 0 ? -tmp_order : tmp_order) / (int)pow(10, ORDER_LEN) != 0)
-                return ERR_RANGE;
             num->num_order = tmp_order;
             exp_part = true;
         } else return ERR_IO;
