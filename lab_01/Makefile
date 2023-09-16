@@ -19,6 +19,7 @@ func: $(TEST_DIR)/$(FUNC_TESTING)
 
 .PHONY: debug
 debug: CFLAGS += $(DEBUG)
+debug: CFLAGS += -g
 debug: $(TARGET)
 
 .PHONY: clean
