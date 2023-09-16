@@ -24,7 +24,7 @@ debug: $(TARGET)
 
 .PHONY: clean
 clean:
-	rm ./build/*.exe
+	rm -f ./$(TARGET)
 
 $(TARGET): $(SRC)
 	$(CC) $(CFLAGS) $^ -o $@
