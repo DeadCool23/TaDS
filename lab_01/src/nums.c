@@ -27,7 +27,7 @@ err_t integer_input(lllong_t *num) {
             } else return ERR_IO;
         } else if (isdigit(symb)) /* Ввод цифр */ {
             if (!i && symb == '0') leading_nulls = true;     /// Откидывание лидирующих нулей
-            else if (i < LLONG_LEN) num->digits[i++] = symb; /// Запись цифр в структуру
+            else if (i < LLLONG_LEN) num->digits[i++] = symb; /// Запись цифр в структуру
             else return ERR_IO;
         } else return ERR_IO;
     }
