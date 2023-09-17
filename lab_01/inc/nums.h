@@ -5,11 +5,11 @@
 
 #include "errs.h"
 
-#define LLONG_LEN 40                          /// @def LLONG_LEN - Максимальный размер целого числа
-#define LEXP_LEN 30                           /// @def LEXP_LEN - Максимальный размер мантиссы коротекого экспоненциального числа
-#define LLEXP_LEN 40                          /// @def LLEXP_LEN - Максимальный размер мантиссы длинного экспоненциального числа
-#define LLLEXP_LEN (LLONG_LEN + LEXP_LEN + 2) /// @def LLLEXP_LEN Максимальный размер матсиссы максимального экспоненциального числа
-#define ORDER_LEN 5                           /// @def ORDER_LEN - Максимальный порядок экспоненциальных чисел
+#define LLLONG_LEN 40                          /// @def LLLONG_LEN - Максимальный размер целого числа
+#define LEXP_LEN 30                            /// @def LEXP_LEN - Максимальный размер мантиссы коротекого экспоненциального числа
+#define LLEXP_LEN 40                           /// @def LLEXP_LEN - Максимальный размер мантиссы длинного экспоненциального числа
+#define LLLEXP_LEN (LLLONG_LEN + LEXP_LEN + 2) /// @def LLLEXP_LEN Максимальный размер матсиссы максимального экспоненциального числа
+#define ORDER_LEN 5                            /// @def ORDER_LEN - Максимальный порядок экспоненциальных чисел
 
 /// @struct lexp_t - экспоненциальное число с мантиссой размера 30
 typedef struct {
@@ -36,7 +36,7 @@ typedef struct {
 /// @struct lllong_t - целое число размера 40
 typedef struct {
     bool sign;
-    char digits[LLONG_LEN + 1];
+    char digits[LLLONG_LEN + 1];
 } lllong_t;
 
 
