@@ -11,21 +11,21 @@
 #define LLLEXP_LEN (LLLONG_LEN + LEXP_LEN + 2) /// @def LLLEXP_LEN Максимальный размер матсиссы максимального экспоненциального числа
 #define ORDER_LEN 5                            /// @def ORDER_LEN - Максимальный порядок экспоненциальных чисел
 
-/// @struct lexp_t - экспоненциальное число с мантиссой размера 30
+/// @struct lexp_t - экспоненциальное число с мантиссой размера LEXP_LEN
 typedef struct {
     bool sign;
     char mantiss[LEXP_LEN + 1];
     int num_order;
 } lexp_t;
 
-/// @struct llexp_t - экспоненциальное число с мантиссой размера 40
+/// @struct llexp_t - экспоненциальное число с мантиссой размера LLEXP_LEN
 typedef struct {
     bool sign;
     char mantiss[LLEXP_LEN + 1];
     int num_order;
 } llexp_t;
 
-/// @struct lllexp_t - экспоненциальное число с мантиссой размера 40
+/// @struct lllexp_t - экспоненциальное число с мантиссой размера LLLEXP_LEN
 typedef struct {
     bool sign;
     char mantiss[LLLEXP_LEN + 1];
@@ -33,7 +33,7 @@ typedef struct {
 } lllexp_t;
 
 
-/// @struct lllong_t - целое число размера 40
+/// @struct lllong_t - целое число размера LLLONG_LEN
 typedef struct {
     bool sign;
     char digits[LLLONG_LEN + 1];
