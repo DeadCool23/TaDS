@@ -124,8 +124,8 @@ err_t exponent_input(lexp_t *num) {
             /// Обнуление счетчика дробных значений если там одни нули
             if (only_nulls_in_float) cnt_unordered = 0; 
             /// Запись окончания числа в мантиссу
-            num->mantiss[only_nulls_in_float && with_float ? i - (float_nulls - 1) : i] = '\0';
-            is_matiss = strlen(num->mantiss) ? true : false;
+            num->mantiss[only_nulls_in_float && with_float ? i - float_nulls : i] = '\0';
+            is_matiss = leading_nulls || strlen(num->mantiss) ? true : false;
             ungetc(symb, stdin); /// Возват последного забранного символа
         } else if (strchr("Ee", symb) && is_matiss) /** Обработка экспоненциальной части */ {
             /// Проверка символа после указание на наличие экспоненциальной части
