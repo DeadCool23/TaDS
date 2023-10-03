@@ -1,0 +1,41 @@
+The Royal Opera House|Swan Lake|50-75|Ballet|Pyotr Ilyich Tchaikovsky|United Kingdom|0+|180|
+Broadway Theatre|The Phantom of the Opera|80-100|Musical|Andrew Lloyd Webber|United States|12+|150|
+La Scala Opera House|La Traviata|75-90|Opera|Giuseppe Verdi|Italy|16+|160|
+Moscow Art Theatre|Uncle Vanya|10-50|Drama|-|-|-|-|
+Paris Opera Ballet|The Nutcracker|80-85|Ballet|Pyotr Ilyich Tchaikovsky|France|0+|135|
+Royal Ballet|Giselle|70-80|Ballet|Adolphe Adam|United Kingdom|0+|140|
+American Ballet Theatre|Don Quixote|90-95|Ballet|Ludwig Minkus|United States|0+|160|
+National Theatre|Hamlet|70-95|Drama|-|-|-|-|
+La Comedie-Francaise|Les Miserables|80-90|Drama|-|-|-|-|
+Broadway Theatre|Death of a Salesman|80-85|Drama|-|-|-|-|
+Royal Court Theatre|A Streetcar Named Desire|40-80|Drama|-|-|-|-|
+Funny Theatre|The Comedy of Errors|30-75|Comedy|-|-|-|-|
+Laugh Out Loud Comedy Club|Stand-Up Night|40-60|Comedy|-|-|-|-|
+Comedy Club|Open Mic Comedy|50-70|Comedy|-|-|-|-|
+Hilarious Theater|Slapstick Frenzy|20-80|Comedy|-|-|-|-|
+Enchanted Theatre|The Magical Forest|30-50|Fairytale|-|-|3+|-|
+Fantasy Playhouse|Cinderella's Adventure|50-70|Fairytale|-|-|4+|-|
+Dreamland Productions|Alice in Wonderland|60-80|Fairytale|-|-|5+|-|
+Whimsical Theater|Peter Pan's Journey|40-60|Fairytale|-|-|6+|-|
+Classic Theater|Hamlet|40-70|Piesa|-|-|-|-|
+Modern Playhouse|Romeo and Juliet|50-80|Piesa|-|-|-|-|
+Shakespearean Company|Macbeth|45-75|Piesa|-|-|-|-|
+Contemporary Theater|A Streetcar Named Desire|55-90|Piesa|-|-|-|-|
+Opera House|Carmen|110-120|Opera|Georges Bizet|France|18+|200|
+Royal Opera|La Traviata|90-110|Opera|Giuseppe Verdi|Italy|16+|170|
+Metropolitan Opera|The Magic Flute|95-140|Opera|Wolfgang Amadeus Mozart|Austria|12+|190|
+Bolshoi Theatre|Rigoletto|115-125|Opera|Giuseppe Verdi|Italy|16+|180|
+Theatre Royal|The Phantom of the Opera|120-180|Musical|Andrew Lloyd Webber|United Kingdom|12+|150|
+Broadway Theatre|Les Miserables|130-190|Musical|Claude-Michel Schonberg|France|16+|170|
+West End Theatre|Cats|110-160|Musical|Andrew Lloyd Webber|United Kingdom|10+|140|
+Champs-Elysees Theatre|Beauty and the Beast|100-150|Musical|Alan Menken|United States|6+|130|
+Bolshoi Theatre|Swan Lake|70-120|Ballet|Pyotr Ilyich Tchaikovsky|Russia|12+|140|
+Royal Opera House|Giselle|80-130|Ballet|Adolphe Adam|France|10+|150|
+Paris Opera Ballet|The Nutcracker|75-125|Ballet|Pyotr Ilyich Tchaikovsky|France|8+|135|
+American Ballet Theatre|Don Quixote|85-135|Ballet|Ludwig Minkus|United States|14+|155|
+Mariinsky Theatre|Sleeping Beauty|90-140|Ballet|Pyotr Ilyich Tchaikovsky|Russia|10+|160|
+Shakespearean Theatre|Hamlet|20-40|Drama|-|-|-|-|
+Broadway Musical|The Phantom of the Opera|50-100|Musical|Andrew Lloyd Webber|United States|12+|150|
+Comedy Club|Stand-Up Comedy|10-25|Comedy|-|-|-|-|
+Ballet Royale|Swan Lake|30-60|Ballet|Pyotr Ilyich Tchaikovsky|Russia|6+|120|
+Children's Theatre|Alice in Wonderland|10-20|Fairytale|-|-|4+|-|
