@@ -15,3 +15,4 @@ err_t search_ballet_by_fiealds(theatre_table_t *table);
 void free_table(theatre_table_t *table);
 
 #endif //__TABLE_ADD_DEL_SEARCH_H__
+

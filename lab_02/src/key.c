@@ -40,3 +40,4 @@ void keys_print(key_table_t *key_table) {
         printf("|%5zu|%-30s|\n", key_table->keys[i].ind, key_table->keys[i].theatre_name);
     ending('k');
 }
+

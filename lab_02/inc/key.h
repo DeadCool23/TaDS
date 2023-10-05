@@ -1,5 +1,5 @@
 #ifndef __KEY_H__
-#define __KET_H__
+#define __KEY_H__
 
 #include "theatre.h"
 
@@ -12,3 +12,4 @@ void key_table_print(key_table_t *key_table, theatre_table_t *table);
 void keys_print(key_table_t *key_table);
 
 #endif //__KEY_H__
+

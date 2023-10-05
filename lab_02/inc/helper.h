@@ -12,3 +12,4 @@ void clean_buf(void);
 char *get_str(FILE *file, char end, ssize_t size);
 
 #endif //__HELPER_H__
+

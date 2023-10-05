@@ -44,3 +44,4 @@ err_t load_table_from_file(FILE *file, theatre_table_t *table) {
     }
     return OK;
 }
+

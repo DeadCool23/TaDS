@@ -53,3 +53,4 @@ char *get_str(FILE *file, char end, ssize_t size) {
     free(str);
     return NULL;
 }
+

@@ -27,3 +27,4 @@ void print_sort_cmp_table(mes_t res[][ARR_TYPE]);
 void print_arr_cmp_table(mes_t res[][ARR_TYPE]);
 
 #endif //MESCMP_H
+

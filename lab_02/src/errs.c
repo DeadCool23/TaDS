@@ -8,3 +8,4 @@ void err_print(err_t err) {
     if (err == ERR_MEM) printf("\033[0;31mERROR:\033[0m Not enough memory\n\n");
     if (err == ERR_FILE) printf("\033[0;31mERROR:\033[0m Incorrect file\n\n");
 }
+

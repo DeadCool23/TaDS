@@ -12,3 +12,4 @@ void qsort_table(theatre_t *arr, int low, int high);
 void qsort_table_by_keys(key_t *arr, int low, int high);
 
 #endif //__SORT_H__
+

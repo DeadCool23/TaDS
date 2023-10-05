@@ -183,3 +183,4 @@ void free_table(theatre_table_t *table) {
     table->theatres = NULL;
     table->size = 0;
 }
+

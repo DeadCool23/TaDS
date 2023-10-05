@@ -211,3 +211,4 @@ err_t load_theatre_from_file(FILE *file, theatre_t *theatre) {
     free(type);
     return err;
 }
+

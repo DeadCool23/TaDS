@@ -107,3 +107,4 @@ err_t actions(void) {
     free(table.theatres);
     return err;
 }
+

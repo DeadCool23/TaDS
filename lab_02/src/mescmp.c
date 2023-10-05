@@ -124,3 +124,4 @@ void print_arr_cmp_table(mes_t res[][ARR_TYPE]) {
     printf("%-10s|%-10s|%-30zu|%-30zu|\n", "ssort", "Time, ms", res[0][TABLE].time, res[0][KEY_TABLE].time);
     printf("%-10s|%-10s|%-30zu|%-30zu|\n\n", " ", "Memory, b", res[0][TABLE].mem, res[0][KEY_TABLE].mem);
 }
+

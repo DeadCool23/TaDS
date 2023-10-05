@@ -12,3 +12,4 @@ typedef enum {
 void err_print(err_t err);
 
 #endif //__ERRS_H__
+
