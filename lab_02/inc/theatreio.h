@@ -26,6 +26,7 @@
 
 void theatre_print(const theatre_t *theatre);
 err_t load_theatre_from_file(FILE *file, theatre_t *theatre);
+void load_theatre_to_formated_file(FILE *file, const theatre_t *theatre);
 
 #endif //__THEATREIO_H__
 

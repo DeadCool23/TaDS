@@ -13,7 +13,8 @@ void menu(void) {
     printf("| 7. Search ballets by age and duration                             |\n");
     printf("| 8. Print cmp of table or key table sorting                        |\n");
     printf("| 9. Print cmp of faster and slower sorting algorithms              |\n");
-    printf("|10. Clean table                                                    |\n");
+    printf("|10. Add data to formated file                                      |\n");
+    printf("|11. Clean table                                                    |\n");
     printf("---------------------------------------------------------------------\n");
     printf("| -1. \033[0;31mExit\033[0m                                                          |\n");
     printf("---------------------------------------------------------------------\n");

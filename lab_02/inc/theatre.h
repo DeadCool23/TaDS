@@ -86,4 +86,3 @@ typedef struct keys_table{
 } key_table_t;
 
 #endif  //__THEATRE_H__
-

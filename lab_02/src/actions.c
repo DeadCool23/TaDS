@@ -85,6 +85,20 @@ err_t actions(void) {
                 !is_key ? key_table.free_key_table(&key_table) : ssort_table_by_keys(&key_table);
                 break;
             case 10:
+                printf("Input \033[4mfilename\033[0m: ");
+                filename = get_str(stdin, '\n', -1);
+                file = fopen(filename, "w");
+                if (file == NULL) err = ERR_FILE;
+                if (!err) {
+                    if (!table.size) printf("\033[4mNo data in table\033[0m\n\n");
+                    else {
+                        load_table_to_formated_file(file, &table);
+                        printf("Data \033[0;32msuccessfully\033[0m loaded in %s\n\n", filename);
+                    }
+                    fclose(file);
+                }
+                break;
+            case 11:
                 free_table(&table);
                 key_table.free_key_table(&key_table);
                 printf("Data \033[0;32msuccessfully\033[0m cleaned\n\n");

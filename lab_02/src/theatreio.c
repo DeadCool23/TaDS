@@ -85,6 +85,8 @@ void theatre_print(const theatre_t *theatre) {
     printf("\n");
 }
 
+//==========================================================================================
+
 static bool is_real_type(char *type, theatre_t *theatre) {
     if (!strcmp(type, "Ballet")) {
         theatre->type = MUSICALY;
@@ -212,3 +214,34 @@ err_t load_theatre_from_file(FILE *file, theatre_t *theatre) {
     return err;
 }
 
+//==========================================================================================
+
+static void load_musical_to_formated_file(FILE *file, const musicaly_t *musical) {
+    fprintf(file, "%s|%s|%s|%" PRIu16 "+|%" PRIu32 "|", 
+    (musical->type == BALLET) ? "Ballet" : (musical->type == OPERA) ? "Opera"
+    : (musical->type == MUSICAL) ? "Musical" : "",
+    musical->composer_name, musical->country_name, 
+    musical->age, musical->duration);
+}
+
+static  void load_play_to_formated_file(FILE *file, const play_t *play) {
+    fprintf(file, "%s|-|-|", (play->type == PIESA) ? "Piesa" : (play->type == COMEDY) ? "Comedy" 
+    : (play->type == DRAMA) ? "Drama" : (play->type == FAIRYTALE) ? "Fairytale" : "");
+    play->for_kids ? fprintf(file, "%" PRIu16 "+|-|", play->age) : fprintf(file, "-|-|");
+}
+
+void load_theatre_to_formated_file(FILE *file, const theatre_t *theatre) {
+    fprintf(file, "%s|%s|%" PRIu32 "-%" PRIu32 "|", theatre->theatre_name, theatre->perfomance_name,
+    theatre->price_range[0], theatre->price_range[1]);
+    switch (theatre->type)
+    {
+        case PLAY:
+            load_play_to_formated_file(file, &theatre->perfomance.play);
+            break;
+        
+        case MUSICALY:
+            load_musical_to_formated_file(file, &theatre->perfomance.musical);
+            break;
+    }
+    fprintf(file, "\n");
+}

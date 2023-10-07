@@ -45,3 +45,7 @@ err_t load_table_from_file(FILE *file, theatre_table_t *table) {
     return OK;
 }
 
+void load_table_to_formated_file(FILE *file, const theatre_table_t *table) {
+    for (size_t i = 0; i < table->size; i++)
+        load_theatre_to_formated_file(file, &table->theatres[i]);
+}

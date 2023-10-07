@@ -28,7 +28,7 @@ void ending(char type) {
     printf("\n\n");
 }
 
-void clean_buf(void) { for (char symb = getc(stdin); symb != '\n' && symb != EOF; symb = getc(stdin)); }
+void clean_buf(void) { for (char symb = '0'; symb != '\n' && symb != EOF; symb = getc(stdin)); }
 
 char *get_str(FILE *file, char end, ssize_t size) {
     size_t cnt = 0;
