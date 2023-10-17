@@ -11,6 +11,8 @@ err_t actions(void) {
     do {
         menu();
         printf("Input choice: ");
+
+        act = 0;
         scanf("%d", &act);
         printf("\033[2J"); // Очистка экрана
         clean_buf();
