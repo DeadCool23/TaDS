@@ -12,10 +12,8 @@ static err_t coordinate_matrix_read(FILE *f, const matrix_t *matrix) {
 #define CORDINATES_INPUT_CNT 3
     int els_cnt;
     err_t err = OK;
-    bool * addi_arr = calloc(matrix->rows, sizeof(*addi_arr));
-    if (!addi_arr) return ERR_MEM;
-    bool * addj_arr = calloc(matrix->cols, sizeof(*addj_arr));
-    if (!addj_arr) ERR_GOTO(err, ERR_MEM, faddi);
+    bool *add_arr = calloc(matrix->rows * matrix->cols, sizeof(*add_arr));
+    if (!add_arr) return ERR_MEM;
 
     INPUT_PROMT(f, "\nInput \033[4mcount of coordinates\033[0m: ");
     if (fscanf(f, "%d", &els_cnt) != 1)
@@ -38,15 +36,14 @@ static err_t coordinate_matrix_read(FILE *f, const matrix_t *matrix) {
 
         if ((n_tmp <= 0 || (size_t)n_tmp > matrix->rows) || 
             (m_tmp <= 0 || (size_t)m_tmp > matrix->cols) ||
-            (addi_arr[n_tmp - 1] && addi_arr[m_tmp - 1]))
+            add_arr[matrix->cols * (n_tmp - 1) + (m_tmp - 1)])
             ERR_GOTO(err, ERR_IO, end);
 
         matrix->data[n_tmp - 1][m_tmp - 1] = el_tmp;
-        addi_arr[n_tmp - 1] = addj_arr[m_tmp - 1] = true;
+        add_arr[matrix->cols * (n_tmp - 1) + (m_tmp - 1)] = true;
     }
     
-    end: free(addj_arr);
-    faddi: free(addi_arr);
+    end: free(add_arr);
     return !err ? (fileno(f) != STDIN_FILENO) ? (is_eof(f) ? OK : ERR_FILE) : OK : err;
 #undef CORDINATES_INPUT_CNT
 }
