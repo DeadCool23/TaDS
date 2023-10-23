@@ -1,7 +1,7 @@
-#include "../inc/matrixio.h"
+#include "matrixio.h"
 
-#include "../inc/allocate.h"
-#include "../inc/inout.h"
+#include "allocate.h"
+#include "inout.h"
 #include "helper.h"
 
 #include <stdio.h>

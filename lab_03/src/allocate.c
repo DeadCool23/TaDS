@@ -1,4 +1,4 @@
-#include "../inc/allocate.h"
+#include "allocate.h"
 
 #include <stdlib.h>
 
