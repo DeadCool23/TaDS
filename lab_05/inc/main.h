@@ -5,6 +5,7 @@
 
 #include "errs.h"
 
+#include "mes.h"
 #include "menu.h"
 
 #include "aqueue.h"

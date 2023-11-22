@@ -42,7 +42,7 @@
 
 #define is_T1_lower_T2 ((max(T1_RANGE(1)- T1_RANGE(0), T2_RANGE(1) - T2_RANGE(0))) == (T1_RANGE(1)- T1_RANGE(0)) ? true : false)
 
-#define teor_modeling_time ((max(T1_RANGE(1)- T1_RANGE(0), T2_RANGE(1) - T2_RANGE(0))) / 2.0 * 1000 * (((fabs(CHANCE - 1.0) < EPS) ? (1 / (1 - CHANCE)) : 1)))
+#define teor_modeling_time (((max(T1_RANGE(1)- T1_RANGE(0), T2_RANGE(1) - T2_RANGE(0))) / 2.0 * 1000) * (((is_T1_lower_T2) ? 1 : (1 / (1 - CHANCE)))))
 
 static double get_time(double beg, double end) { return beg + ((double)rand() / RAND_MAX) * (end - beg); }
 
