@@ -2,7 +2,7 @@
 #define __CONST_H__
 
 #define T1_RANGE(i) (!i ? 0 : 6)  // Времена прихода
-#define T2_RANGE(i) (!i ? 0 : 1) // Времена обработка
+#define T2_RANGE(i) (!i ? 0 : 1)  // Времена обработка
 
 #define CHANCE 0.8                // Вероятность
 

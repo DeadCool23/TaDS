@@ -215,26 +215,25 @@ static err_t list_service_unit(addresses_t **adrs, bool get_mes, ...) {
     ssize_t beg = microseconds_now();
     if (CHANCE >= 1) {
         printf("Noone request from 1000 went out from queue\n");
-        ERR_GOTO(err, ERR_MEM, error_exit);
+        return ERR_CHANCE;
     }
 
     while (su.out_requests_cnt != REQUESTS_CNT) {
         double modeling_time = get_time(T1_RANGE(0), T1_RANGE(1));
         if (add_request()) {
             if ((err = lq_push(&queue, 0)))
-                goto error_exit;
+                return err;
             su.in_requests_cnt++;
         }
-
         
         double request = lq_pop(&queue);
         if (request < 0) continue;
         request += (request < EPS) ? 0 : modeling_time;
-        
+
         if (queue)
             if (add_address(adrs, queue))
                 ERR_GOTO(err, ERR_MEM, error_exit);
-        
+
         double simple_time = get_time(T2_RANGE(0), T2_RANGE(1));
 
         if (service_unit()) {
@@ -244,10 +243,10 @@ static err_t list_service_unit(addresses_t **adrs, bool get_mes, ...) {
             su.requests_in_queue.cnt++;
             su.requests_in_queue.sum += request + simple_time;
 
-            su.modeling_time += (is_T1_lower_T2 ? modeling_time : simple_time) * (1 / (1 - CHANCE));
+            su.modeling_time += is_T1_lower_T2 ? modeling_time : (simple_time * (1 / (1 - CHANCE)));
             su.simple_time += is_T1_lower_T2 ? simple_time : 0;
         } else {
-            if ((err = lq_push(&queue, 0)))
+            if ((err = lq_push(&queue, request + simple_time)))
                 goto error_exit;
             if (get_mes) mes->mem += sizeof(*queue);
             is_request_out = false;
