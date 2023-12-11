@@ -1,0 +1,22 @@
+digraph balanced_word_tree {
+  node [fontname="Arial"];
+  "f" [label="f"];
+  "c" [label="c"];
+  "ar" [label="ar"];
+  "Cd" [label="Cd"];
+  "d" [label="d"];
+  "e" [label="e"];
+  "k" [label="k"];
+  "g" [label="g"];
+  "rb" [label="rb"];
+  "l" [label="l"];
+  "f" -> "c";
+  "f" -> "k";
+  "c" -> "ar";
+  "c" -> "d";
+  "ar" -> "Cd";
+  "d" -> "e";
+  "k" -> "g";
+  "k" -> "rb";
+  "rb" -> "l";
+}
