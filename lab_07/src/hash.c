@@ -6,7 +6,6 @@
 #include <stdbool.h>
 
 #define _GNU_SOURCE
-#define MAX_HASH_STEP 3
 
 /// @brief Хэш-функция
 static size_t hashing(string key, size_t size) {
@@ -61,7 +60,7 @@ void chash_add(chash_table_t *table, string key, bool inf) {
         table->hash_table[index] = strdup(key);
         is_full = false;
     } else {
-        for (size_t i = (index + 1) % table->size, cnt = 0; cnt < MAX_HASH_STEP && is_full; i = (i + 1) % table->size, cnt++) {
+        for (size_t i = (index + 1) % table->size, cnt = 0; cnt < MAX_COLLIZION_CNT && is_full; i = (i + 1) % table->size, cnt++) {
             if (!table->hash_table[i]) {
                 table->hash_table[i] = strdup(key);
                 is_full = false;
@@ -86,7 +85,7 @@ int chash_remove(chash_table_t *table, string key, size_t *cmp_cnt) {
         table->hash_table[index] = NULL;
         is_finded = true;
     } else {
-        for (size_t i = (index + 1) % table->size, cnt = 0; cnt < MAX_HASH_STEP; i = (i + 1) % table->size, cnt++) {
+        for (size_t i = (index + 1) % table->size, cnt = 0; cnt < MAX_COLLIZION_CNT; i = (i + 1) % table->size, cnt++) {
             if (cmp_cnt) (*cmp_cnt)++;
             if (!strcmp(table->hash_table[index] ? table->hash_table[index] : "\n", key)) {
                 free(table->hash_table[i]);
@@ -153,7 +152,7 @@ void ohash_add(ohash_table_t *table, string key, bool inf) {
         current->next = new_node;
     }
 
-    if (new_node->index >= MAX_HASH_STEP) {
+    if (new_node->index >= MAX_COLLIZION_CNT) {
         if (inf) printf("Opened hash table was restructed\n");
         orestructuring(table, inf);
     } else

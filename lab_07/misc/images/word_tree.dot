@@ -1,22 +1,30 @@
 digraph word_tree {
   node [fontname="Arial"];
   "g" [label="g"];
+  "A" [label="A"];
   "e" [label="e"];
   "c" [label="c"];
+  "As" [label="As"];
+  "Ab" [label="Ab"];
   "Cd" [label="Cd"];
   "ar" [label="ar"];
+  "a" [label="a"];
   "d" [label="d"];
   "f" [label="f"];
   "k" [label="k"];
   "l" [label="l"];
   "rb" [label="rb"];
-  "g" -> "e";
+  "g" -> "A";
   "g" -> "k";
+  "A" -> "e";
   "e" -> "c";
   "e" -> "f";
-  "c" -> "Cd";
+  "c" -> "As";
   "c" -> "d";
+  "As" -> "Ab";
+  "As" -> "Cd";
   "Cd" -> "ar";
+  "ar" -> "a";
   "k" -> "l";
   "l" -> "rb";
 }
