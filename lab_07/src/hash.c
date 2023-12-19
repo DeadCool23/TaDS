@@ -85,7 +85,7 @@ int chash_remove(chash_table_t *table, string key, size_t *cmp_cnt) {
         table->hash_table[index] = NULL;
         is_finded = true;
     } else {
-        for (size_t i = (index + 1) % table->size, cnt = 0; cnt < MAX_COLLIZION_CNT; i = (i + 1) % table->size, cnt++) {
+        for (size_t i = (index + 1) % table->size, cnt = 0; cnt < MAX_COLLIZION_CNT && !is_finded; i = (i + 1) % table->size, cnt++) {
             if (cmp_cnt) (*cmp_cnt)++;
             if (!strcmp(table->hash_table[index] ? table->hash_table[index] : "\n", key)) {
                 free(table->hash_table[i]);
