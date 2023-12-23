@@ -9,10 +9,12 @@
 
 /// @brief Хэш-функция
 static size_t hashing(string key, size_t size) {
+#define NUM_IN_ALPHABET(letter) ((letter) - 'a' + 1)
     size_t index = 0;
-    for (char *i = key; *i != '\0'; index += *i++);
+    for (char *i = key; *i != '\0'; index += ((i - 1) > key ? NUM_IN_ALPHABET(*(i - 1)) : 1) * *i, i++);
     index = (index * strlen(key)) % size;
     return index;
+#undef NUM_IN_ALPHABET
 }
 
 // Close hash
